@@ -1,0 +1,36 @@
+.jumbotron {
+  padding-top: 6rem;
+  background-color: #353535;
+}
+#about_us {
+  margin-top: -1px;
+}
+
+#pictures_pages {
+  margin-top: -1px;
+  background-color: #353535;
+}
+.card {
+  margin-top: 20px;
+}
+#organigram {
+  margin-top: -1px;
+}
+.carousel-inner {
+  margin-left: 25%;
+}
+.carousel-control-prev {
+  margin-left: 20%;
+}
+.carousel-control-next {
+  margin-right: 20%;
+}
+#ngl {
+  margin-top: -1px;
+}
+footer {
+  margin-top: -1px;
+}
+section {
+  padding-top: 5rem;
+}
