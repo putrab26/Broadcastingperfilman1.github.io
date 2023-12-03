@@ -14,16 +14,16 @@
   margin-top: 20px;
 }
 #organigram {
-  margin-top: -3px;
+  margin-top: -1px;
 }
 .carousel-inner {
-  margin-left: 9%;
+  margin-left: 10%;
 }
 .carousel-control-prev {
-  margin-left: 8%;
+  margin-left: 20%;
 }
 .carousel-control-next {
-  margin-right: 8%;
+  margin-right: 20%;
 }
 #ngl {
   margin-top: -1px;
