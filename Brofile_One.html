@@ -253,16 +253,24 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+            <div class="alert alert-success alert-dismissible fade show text-center d-none my-alert" role="alert">
+              <strong>Terimakasih!!</strong> Pesan anda telah diterima.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <form name="broadcasting-perfilman-1-form">
               <div class="mb-3">
                 <label for="email" class="form-label" data-aos="fade-up" data-aos-anchor-placement="top-center">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="EMAIL" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-delay="600" />
+                <input type="email" class="form-control" id="email" placeholder="EMAIL" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-delay="600" name="email" />
               </div>
               <div class="mb-3">
                 <label for="pesan" class="form-label" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-delay="700">Pesan</label>
-                <textarea class="form-control" id="pesan" rows="3" placeholder="ISIKAN PESANMU" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-delay="800"></textarea>
+                <textarea class="form-control" id="pesan" rows="3" placeholder="ISIKAN PESANMU" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-delay="800" name="pesan"></textarea>
               </div>
-              <button type="submit" class="btn btn-danger" data-aos="zoom-out-up" data-aos-delay="900">Kirim!</button>
+              <button type="submit" class="btn btn-danger btn-kirim" data-aos="zoom-out-up" data-aos-delay="900">Kirim!</button>
+              <button class="btn btn-danger btn-loading d-none" type="button" disabled>
+                <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                <span role="status">Loading...</span>
+              </button>
             </form>
           </div>
         </div>
@@ -292,5 +300,35 @@
       AOS.init();
     </script>
     <!-- End Animasi AOS -->
+
+    <!-- JS Contact Form NGL -->
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzuqye2wOjKDNKqZck3QlNZADcXxRa4mEGMtfdJO8KDhHgGeqPuT6UxMSOg-5fVf4xY/exec";
+      const form = document.forms["broadcasting-perfilman-1-form"];
+      const btnKirim = document.querySelector(".btn-kirim");
+      const btnLoading = document.querySelector(".btn-loading");
+      const myAlert = document.querySelector(".my-alert");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        // Ketika button di kirim
+        // Munculkan tombol loading dan hilangkan tombol kirim
+        btnLoading.classList.toggle("d-none");
+        btnKirim.classList.toggle("d-none");
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            // Munculkan tombol kirim dan hilangkan tombol loading
+            btnLoading.classList.toggle("d-none");
+            btnKirim.classList.toggle("d-none");
+            // Munculkan alert
+            myAlert.classList.toggle("d-none");
+            // Mereset Form
+            form.reset();
+            console.log("Success!", response);
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
+    <!-- End JS Contact Form NGL -->
   </body>
 </html>
